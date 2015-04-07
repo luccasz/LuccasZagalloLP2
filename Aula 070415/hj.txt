@@ -1,0 +1,26 @@
+string a = "teste";
+           char b = a[2];
+
+           Console.WriteLine("\t Oi! \n Olá!"); 
+
+           int numero = int.Parse(Console.ReadLine());
+           int soma = 0;
+
+           for (int i = 1; i <= numero; i++)
+           {
+               soma += i;
+ 
+           }
+           Console.WriteLine(soma); 
+
+           // ex2
+           string txt = "O rato roeu a roupa";
+           string separador = " ";
+
+           // Split: Divide a frase
+           string[] pedacos = txt.Split(separador.ToCharArray()); // tipo de retorno: string[]
+
+           foreach (string s in pedacos)
+           {
+               Console.WriteLine(s);
+           }
