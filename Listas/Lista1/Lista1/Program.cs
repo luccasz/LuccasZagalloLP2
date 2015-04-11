@@ -10,19 +10,14 @@ namespace Lista1
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(Funcionario());
             Console.WriteLine(Fatorial());
             Console.WriteLine(Soma1aN());
-            Console.WriteLine(Ex3());
-            Console.WriteLine(Ex6());
         }
 
         static string Fatorial()
         {
-            /*Faça um programa que leia um número N e calcule o fatorial desse número.
-             Fat(N) = N! = N × (N − 1) × (N − 2) × ⋯ × 3 × 2 × 1 */
-
             int num = int.Parse(Console.ReadLine());
-
             int fatorial = 1;
 
             for (int i = 0; i < num; i++)
@@ -34,77 +29,62 @@ namespace Lista1
 
         static int Soma1aN()
         {
-            /* leia um número N e calcule e mostre como resposta a soma de todos os números 
-               inteiros entre 1 e N. */
-
             int n = int.Parse(Console.ReadLine());
-
             int i, soma = 0;
 
-                for (i = 0; i < n; i++)
+                for (i = 0; i <= n; i++)
                 {
                     soma = soma + i;
                 }
             return soma;         
         }
 
-        static int Ex3()
+        static double Funcionario()
         {
-            /* Leia o número de funcionários (> 0) de uma empresa e, em seguida, leia o nome 
-               e o salário atuais de cada um deles. Você deve calcular o novo salário
-               e mostrar o nome, o salário atual e o salário reajustado de cada funcionário. */
-
             int numero = int.Parse(Console.ReadLine());
+            double percent_aumento = 0;
+            double novo_salario = 0;
 
-            int acrescimo = 0;
-            int salarioFinal = 0;
-
-            for (int i = 0; i < numero; i++)
+            while (numero > 0)
             {
-                    int salario = int.Parse(Console.ReadLine());
+                double salario_atual = double.Parse(Console.ReadLine());
+                string nome = Console.ReadLine();
 
-                    string nome = Console.ReadLine();
-
-                    if (salario >= 0 && salario < 3000)
-                    {
-                        acrescimo = 25/100;
-                        salarioFinal = salario + (acrescimo * salario);
-                    }
-
-                    if (salario >= 3000 && salario < 4000)
-                    {
-                        acrescimo = 20 / 100;
-                        salarioFinal = salario + (acrescimo * salario);
-                    }
-
-                    if (salario >= 4000 && salario < 5000)
-                    {
-                        acrescimo = 15 / 100;
-                        salarioFinal = salario + (acrescimo * salario);
-                    }
-
-                    if (salario >= 5000)
-                    {
-                        acrescimo = 10 / 100;
-                        salarioFinal = salario + (acrescimo * salario);
-                    }              
+                if (salario_atual >= 0 && salario_atual < 3000)
+                {
+                    percent_aumento = salario_atual * 0.25;
+                    novo_salario = salario_atual + percent_aumento;
+                    Console.WriteLine("O funcionário {0}, teve um aumento de R$ {1}, e agora seu salário é: R${2}", nome, percent_aumento, novo_salario);
+                }
+                if (salario_atual >= 3000 && salario_atual < 4000)
+                {
+                    percent_aumento = salario_atual * 0.20;
+                    novo_salario = salario_atual + percent_aumento;
+                    Console.WriteLine("O funcionário {0}, teve um aumento de R$ {1}, e agora seu salário é: R${2}", nome, percent_aumento, novo_salario);
+                }
+                if (salario_atual >= 4000 && salario_atual < 5000)
+                {
+                    percent_aumento = salario_atual * 0.15;
+                    novo_salario = salario_atual + percent_aumento;
+                    Console.WriteLine("O funcionário {0}, teve um aumento de R$ {1}, e agora seu salário é: R${2}", nome, percent_aumento, novo_salario);
+                }
+                if (salario_atual >= 5000)
+                {
+                    percent_aumento = salario_atual * 0.10;
+                    novo_salario = salario_atual + percent_aumento;
+                    Console.WriteLine("O funcionário {0}, teve um aumento de R$ {1}, e agora seu salário é: R${2}", nome, percent_aumento, novo_salario);
+                }
+                numero--;
             }
-            return salarioFinal;
+            return novo_salario;
         }
 
         static int Ex6()
         {
-            /* a. Leia o nome e a altura de mulheres inscritas em um concurso de beleza. 
-               Para cada uma, existe uma linha de entrada contendo seu nome e sua altura (em centímetros). 
-               A entrada termina COM A PALAVRA “FIM” no lugar do nome.
-               b. Calcule e escreva as 2 maiores alturas e quantas das moças as possuem. */
-
             int nMulher = int.Parse(Console.ReadLine());  
-
             while (nMulher > 0)
             {
                 string nome = Console.ReadLine();
-
                 int altura = int.Parse(Console.ReadLine());  
             }
             return nMulher;
