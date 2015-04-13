@@ -13,6 +13,7 @@ namespace Lista1
             Console.WriteLine(Funcionario());
             Console.WriteLine(Fatorial());
             Console.WriteLine(Soma1aN());
+            Console.WriteLine(ConcursoBeleza());
         }
 
         static string Fatorial()
@@ -79,15 +80,24 @@ namespace Lista1
             return novo_salario;
         }
 
-        static int Ex6()
+        static int ConcursoBeleza()
         {
-            int nMulher = int.Parse(Console.ReadLine());  
-            while (nMulher > 0)
+            int num = int.Parse(Console.ReadLine());
+            double maior = 0;
+  
+            while (num > 0)
             {
                 string nome = Console.ReadLine();
-                int altura = int.Parse(Console.ReadLine());  
+                double altura = double.Parse(Console.ReadLine());
+                
+                if (altura > maior)
+                {
+                    maior = altura;
+                }
+                num--;
             }
-            return nMulher;
+            Console.WriteLine("Maior altura entre as participantes é {0}cm", maior);
+            return num;
         }
     }
 }
