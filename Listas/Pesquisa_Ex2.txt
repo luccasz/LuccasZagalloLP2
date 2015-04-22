@@ -1,0 +1,3 @@
+O motivo pelo qual o programa para de funcionar é quando
+digitamos um número negativo, já que não existe fatorial 
+para esse tipo de número.
