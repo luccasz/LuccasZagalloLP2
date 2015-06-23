@@ -17,7 +17,7 @@ namespace Aula_23_06_15
             {
                 string nome = Console.ReadLine();
                 string cpf = Console.ReadLine();
-                int dtNacimento = int.Parse(Console.ReadLine());
+                DateTime dtNacimento = Convert.ToDateTime(Console.ReadLine());
                 double salario = int.Parse(Console.ReadLine());
                 int dtAdmissao = int.Parse(Console.ReadLine()); 
 
