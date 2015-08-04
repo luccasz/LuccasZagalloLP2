@@ -8,72 +8,66 @@ namespace Exercicio11_Viagem
 {
     public class Carro
     {
-        public Carro(int _id, string _modelo, string _marca, string _placa, int _capacidade)
+        private int _id = -1;
+        private string _modelo = String.Empty;
+        private string _marca = String.Empty;
+        private string _placa = String.Empty;
+        private int _ocupacao = 0;
+        private int _capacidade = 0;
+
+        public Carro (int id, string modelo, string marca, string placa, int capacidade)
         {
-            this.p_id = _id;
-            this.p_modelo = _modelo;
-            this.p_marca = _marca;
-            this.p_placa = _placa;
-            this.p_capacidade = _capacidade;
-            this.p_ocupacao = _capacidade;
+            _id = id;
+            _modelo = modelo;
+            _marca = marca;
+            _placa = placa;
+            _capacidade = capacidade;
+            _ocupacao = capacidade;
         }
-
-        private int p_id = -1;
-        private string p_modelo = String.Empty;
-        private string p_marca = String.Empty;
-        private string p_placa = String.Empty;
-        private int p_ocupacao = 0;
-        private int p_capacidade = 0;
-
-        public int ID
+        public int Id
         {
-            get { return p_id; }
-            set { p_id = value; }
+            get { return _id; }
+            set { _id = value; }
         }
-
-        public string modelo
+        public string Modelo
         {
-            get { return p_modelo; }
-            set { p_modelo = value; }
+            get { return _modelo; }
+            set { _modelo = value; }
         }
-
-        public string marca
+        public string Marca
         {
-            get { return p_marca; }
-            set { p_marca = value; }
+            get { return _marca; }
+            set { _marca = value; }
         }
-
-        public string placa
+        public string Placa
         {
-            get { return p_placa; }
-            set { p_placa = value; }
+            get { return _placa; }
+            set { _placa = value; }
         }
-
-        public int ocupacao
+        public int Ocupacao
         {
-            get { return p_ocupacao; }
-            set { p_ocupacao = value; }
+            get { return _ocupacao; }
+            set { _ocupacao = value; }
         }
-
-        public int capacidade
+        public int Capacidade 
         {
-            get { return p_capacidade; }
+            get { return _capacidade; }
             set
             {
-                p_capacidade = value;
-                p_ocupacao = value;
+                _capacidade = value;
+                _ocupacao = value;
             }
         }
 
         public string AlocaPassageiro()
         {
-            if (p_ocupacao == 0)
+            if (_ocupacao == 0)
             {
                 return "Carro lotado!!";
             }
             else 
             {
-                p_ocupacao--;
+                _ocupacao--;
                 return "Alocação realizada";
             }
         }

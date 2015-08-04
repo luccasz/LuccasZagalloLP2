@@ -42,9 +42,9 @@ namespace Exercicio11_Viagem
             Console.WriteLine("");
             Console.WriteLine("Carros cadastrados: ");
 
-            listaCarro.ForEach(delegate(Carro p_carro)
+            listaCarro.ForEach(delegate(Carro carro)
             {
-                Console.WriteLine(p_carro.ID + " - " + p_carro.modelo +  "," + p_carro.marca + "," + p_carro.placa + "," + p_carro.capacidade + "," + p_carro.ocupacao);
+                Console.WriteLine(carro.Id + " - " + carro.Modelo +  "," + carro.Marca + "," + carro.Placa + "," + carro.Capacidade + "," + carro.Ocupacao);
             });
             Console.WriteLine("");
 
@@ -60,11 +60,11 @@ namespace Exercicio11_Viagem
                 }
                 else
                 {
-                    carroExiste = listaCarro.Exists(x => x.ID == idCarro);
+                    carroExiste = listaCarro.Exists(x => x.Id == idCarro);
 
                     if (carroExiste == true)
                     {
-                        car = listaCarro.Find(delegate(Carro p1) { return p1.ID == idCarro; });
+                        car = listaCarro.Find(delegate(Carro p1) { return p1.Id == idCarro; });
 
                         status = car.AlocaPassageiro();
 
@@ -78,16 +78,17 @@ namespace Exercicio11_Viagem
             }
             Console.WriteLine(status);
 
+            Console.WriteLine("");
             Console.WriteLine("Relatório Final:");
             totalPessoas = 0;
-            listaCarro.ForEach(delegate(Carro p_carro)
+            listaCarro.ForEach(delegate(Carro carro)
             {
                 Console.WriteLine("");
-                Console.WriteLine("Carro " + p_carro.ID + ": " + p_carro.modelo + " - " + p_carro.marca + "(" + p_carro.placa + ")");
-                Console.WriteLine("Passageiros: " + p_carro.capacidade);
-                Console.WriteLine("Vagas restantes: " + p_carro.ocupacao);
+                Console.WriteLine("Carro " + carro.Id + ": " + carro.Modelo + " - " + carro.Marca + "(" + carro.Placa + ")");
+                Console.WriteLine("Passageiros: " + carro.Capacidade);
+                Console.WriteLine("Vagas restantes: " + carro.Ocupacao);
 
-                totalPessoas = totalPessoas + p_carro.capacidade - p_carro.ocupacao;
+                totalPessoas = totalPessoas + carro.Capacidade - carro.Ocupacao;
             });
             Console.WriteLine("");
             Console.WriteLine("Total de Pessoas na Viagem : " + totalPessoas);
