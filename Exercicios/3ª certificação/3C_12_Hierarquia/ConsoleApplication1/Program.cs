@@ -12,7 +12,7 @@ namespace ConsoleApplication1
         {
             Funcionario f = new Funcionario();
 
-            List <Funcionario> funcionarios = new List<Funcionario>();
+            List <Funcionario> funcinarios = new List<Funcionario>();
             
             f.Nome = Console.ReadLine();
             f.Cpf = Console.ReadLine();
@@ -20,13 +20,13 @@ namespace ConsoleApplication1
             f.Salario = double.Parse(Console.ReadLine());
             f.Matricula = Console.ReadLine();
 
-            funcionarios.Add(f);
+            funcinarios.Add(f);
 
-            foreach (var item in funcionarios)
-            {
-                Console.WriteLine(item);    
-            }
-            
+            Console.WriteLine(f.Nome);
+            Console.WriteLine(f.Cpf);
+            Console.WriteLine(f.Nascimento);
+            Console.WriteLine(f.Salario);
+            Console.WriteLine(f.Matricula);
         }
     }
 }
