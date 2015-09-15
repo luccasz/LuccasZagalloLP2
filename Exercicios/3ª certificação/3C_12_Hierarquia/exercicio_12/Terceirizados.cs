@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace exercicio_12
 {
-    class Terceirizados
+    class Terceirizados:Trabalhador
     {
-        public string Nome { get; set; }
-        public int Cpf { get; set; }
-        public int DataNascimento { get; set; }
-        public int Matricula { get; set; }
+        public string Cnpj { get; set; }
+        public override double Salario { get; set; }
+
     }
 }

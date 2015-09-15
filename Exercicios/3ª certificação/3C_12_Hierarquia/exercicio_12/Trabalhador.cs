@@ -9,9 +9,9 @@ namespace exercicio_12
     class Trabalhador
     {
         public string Nome {get; set; }
-        public int Cpf { get; set; }
+        public string Cpf { get; set; }
         public int DataNascimento { get; set; }
-        public int Salario { get; set; }
+        public double Salario { get; set; }
         public int Matricula{ get; set; }
         
 

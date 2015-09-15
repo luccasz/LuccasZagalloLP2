@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace exercicio_12
 {
-    class Funcionario
+    class Funcionario:Trabalhador
     {
+
     }
 }
