@@ -71,16 +71,28 @@ namespace Exercicio13
                             {
                                 Console.WriteLine("ID:{0}  NOME:{1}  SOBRENOME:{2}",
                                                    reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
-                            }                    
+                            }
+                            reader.Close();
                             Console.WriteLine("");
-                            Console.WriteLine("---> Deseja ver o registro completo do último usuário criado?? 1-SIM / 0-NÃO");
+                            Console.WriteLine("---> Deseja ver o registro completo de um desses Nomes?? 1-SIM / 0-NÃO");
                             int novo = int.Parse(Console.ReadLine());
 
                             if (novo != 0)
                             {
-                                Console.WriteLine("ID:{0}  NOME:{1}  SOBRENOME:{2}  PESO:{3}  ALTURA:{4}  TELEFONE:{5}",
-                                                   reader.GetInt32(0), reader.GetString(1), reader.GetString(2),
-                                                   reader.GetDouble(3), reader.GetDouble(4), reader.GetString(5));
+                                Console.WriteLine("---> Escolha um ID e digite!!");
+                                int novoId = int.Parse(Console.ReadLine());
+
+                                string strr = string.Format("SELECT * FROM peoples WHERE Id = {0}", novoId);
+                                command.CommandText = strr;
+                                reader = command.ExecuteReader();
+
+                                if (reader.Read())
+                                {
+                                    Console.WriteLine("ID:{0}  NOME:{1}  SOBRENOME:{2}  PESO:{3}  ALTURA:{4}  TELEFONE:{5}",
+                                                       reader.GetInt32(0), reader.GetString(1), reader.GetString(2),
+                                                       reader.GetDouble(3), reader.GetDouble(4), reader.GetString(5));
+                                }
+                                reader.Close();
                             }
                             Console.WriteLine("");
                         }
@@ -89,7 +101,6 @@ namespace Exercicio13
                             Console.WriteLine("Não existe o NOME {0} no sistema!!", nome);
                             Console.WriteLine("");
                         }
-                        reader.Close();
                     }
                     else if (opcaoConsulta == 2)
                     {
