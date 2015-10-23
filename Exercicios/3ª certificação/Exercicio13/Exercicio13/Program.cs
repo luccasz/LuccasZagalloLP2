@@ -15,6 +15,7 @@ namespace Exercicio13
         {
             Console.WriteLine("Opções: (1)Cadastrar / (2)Consultar");
             int opcao = int.Parse(Console.ReadLine());
+            Console.WriteLine("");
 
             MySqlConnection conn = new MySqlConnection("Server=localhost;Database=test;Uid=root;Pwd=luccas");
             conn.Open();
@@ -25,7 +26,8 @@ namespace Exercicio13
             {
                 if (opcao == 1)
                 {
-                    Console.WriteLine("----Opção Cadastro----");
+                    Console.WriteLine("----OPÇÃO CADASTRO----");
+                    Console.WriteLine("Digite na Ordem: 1-Nome/ 2-Sobrenome/ 3-Peso/ 4-Altura/ 5-Telefone");
 
                     Pessoa p = new Pessoa();
                     p.Nome = Console.ReadLine();
@@ -33,28 +35,30 @@ namespace Exercicio13
                     p.Peso = double.Parse(Console.ReadLine());
                     p.Altura = double.Parse(Console.ReadLine());
                     p.Telefone = Console.ReadLine();
+                    Console.WriteLine("USUÁRIO CADASTRADO!!!");
+                    Console.WriteLine("");
 
                     string q = String.Format(new CultureInfo("en"), "INSERT INTO peoples (Nome, Sobrenome, Peso, Altura, Telefone) VALUES ('{0}', '{1}', {2}, {3}, '{4}')", p.Nome, p.Sobrenome, p.Peso, p.Altura, p.Telefone);
 
                     command.CommandText = q;
-                    command.ExecuteNonQuery();
-                    conn.Close();
-
-                    opcao = int.Parse(Console.ReadLine());
+                    command.ExecuteNonQuery();                  
                 }
                 else if (opcao == 2)
                 {
-                    Console.WriteLine("----Opção Consulta----");
+                    Console.WriteLine("");
+                    Console.WriteLine("----OPÇÃO CONSULTA----");
 
                     Console.WriteLine("(1)Consultar por Nome / (2)Consultar por ID");
                     int opcaoConsulta = int.Parse(Console.ReadLine());
+                    Console.WriteLine("");
 
                     if (opcaoConsulta == 1)
                     {
-                        Console.WriteLine("----Opção Consulta Nome----");
+                        Console.WriteLine("----Consulta Nome----");
 
                         Console.WriteLine("Digite um Nome: ");
                         string nome = Console.ReadLine();
+                        Console.WriteLine("");
 
                         string str = string.Format("SELECT * FROM peoples WHERE Nome = '{0}'", nome);
                         command.CommandText = str;
@@ -65,22 +69,35 @@ namespace Exercicio13
                         {
                             while (reader.Read())
                             {
-                                if (reader.GetString(1) == nome)
-                                {
-                                    Console.WriteLine("Id: {0}, Nome: {1}, Sobrenome: {2}, Peso: {3}, Altura: {4}, Telefone: {5} ",
-                                                       reader.GetInt32(0), reader.GetString(1), reader.GetString(2),
-                                                       reader.GetDouble(3), reader.GetDouble(4), reader.GetString(5));
-                                }
+                                Console.WriteLine("ID:{0}  NOME:{1}  SOBRENOME:{2}",
+                                                   reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+                            }                    
+                            Console.WriteLine("");
+                            Console.WriteLine("---> Deseja ver o registro completo do último usuário criado?? 1-SIM / 0-NÃO");
+                            int novo = int.Parse(Console.ReadLine());
+
+                            if (novo != 0)
+                            {
+                                Console.WriteLine("ID:{0}  NOME:{1}  SOBRENOME:{2}  PESO:{3}  ALTURA:{4}  TELEFONE:{5}",
+                                                   reader.GetInt32(0), reader.GetString(1), reader.GetString(2),
+                                                   reader.GetDouble(3), reader.GetDouble(4), reader.GetString(5));
                             }
+                            Console.WriteLine("");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Não existe o NOME {0} no sistema!!", nome);
+                            Console.WriteLine("");
                         }
                         reader.Close();
                     }
-                    else if(opcaoConsulta == 2)
+                    else if (opcaoConsulta == 2)
                     {
-                        Console.WriteLine("----Opção Consulta ID----");
+                        Console.WriteLine("----Consulta ID----");
 
                         Console.WriteLine("Digite um ID: ");
                         int id = int.Parse(Console.ReadLine());
+                        Console.WriteLine("");
 
                         string str = string.Format("SELECT * FROM peoples WHERE Id = '{0}'", id);
                         command.CommandText = str;
@@ -91,16 +108,33 @@ namespace Exercicio13
                         {
                             while (reader.Read())
                             {
-                                if (reader.GetInt32(0) == id)
-                                {
-                                    Console.WriteLine("Id: {0}, Nome: {1}, Sobrenome: {2}, Peso: {3}, Altura: {4}, Telefone: {5} ",
-                                                       reader.GetInt32(0), reader.GetString(1), reader.GetString(2), 
-                                                       reader.GetDouble(3), reader.GetDouble(4), reader.GetString(5));
-                                }
+                                Console.WriteLine("ID:{0}  NOME:{1}  SOBRENOME:{2}  PESO:{3}  ALTURA:{4}  TELEFONE:{5}",
+                                                   reader.GetInt32(0), reader.GetString(1), reader.GetString(2),
+                                                   reader.GetDouble(3), reader.GetDouble(4), reader.GetString(5));
                             }
+                        }
+                        else
+                        {
+                            Console.WriteLine("INFORMAÇÃO IMPORTANTE: Não existe o ID {0} no sistema!!", id);
+                            Console.WriteLine("");
                         }
                         reader.Close();
                     }
+                }
+                Console.WriteLine("");
+                Console.WriteLine("Opções: (1)Cadastrar / (2)Consultar");
+                opcao = int.Parse(Console.ReadLine());
+                Console.WriteLine("");
+
+                if(opcao != 1 && opcao != 2)
+                {
+                    conn.Close();
+                    Console.WriteLine("SAIU DO SISTEMA!!!");
+                    break;
+                }
+                else
+                {
+                    continue;
                 }
             }   
         }
