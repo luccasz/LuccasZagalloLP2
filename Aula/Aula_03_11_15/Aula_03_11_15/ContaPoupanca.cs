@@ -8,13 +8,12 @@ namespace Aula_03_11_15
 {
     class ContaPoupanca : ContaBancaria
     {
-        public string diaRendimento { get; set; }
+        public int diaRendimento { get; set; }
 
-        public void CalculaNovoSaldo(double rendimento)
+        public void CalculaNovoSaldo(double rend, int diaRendimento)
         {
-            double porcento = rendimento * saldo;
-            double novoSaldo = porcento + saldo;
-            Console.WriteLine("Novo Saldo: " + novoSaldo);
+            double percentual = rend * diaRendimento;
+            saldo = saldo * (1 + percentual / 100);
         }
     }
 }

@@ -18,12 +18,13 @@ namespace Aula_040815
             pessoa.Credito = double.Parse(Console.ReadLine());
             pessoa.AddCredito();
 
-            Console.WriteLine(pessoa.Nome);
-            Console.WriteLine(pessoa.Cpf);
-            Console.WriteLine(pessoa.DataNascimento);
-            Console.WriteLine(pessoa.Placa);
-            Console.WriteLine(pessoa.Credito);
-            Console.WriteLine(pessoa.AddCredito());
+            Console.WriteLine("");
+            Console.WriteLine("Nome: {0}",pessoa.Nome);
+            Console.WriteLine("CPF: {0}",pessoa.Cpf);
+            Console.WriteLine("Data Nascimento: {0}", pessoa.DataNascimento.ToLongDateString());
+            Console.WriteLine("Placa: {0}", pessoa.Placa);
+            Console.WriteLine("Créditos: {0}", pessoa.Credito);
+            Console.WriteLine("CRÉDITO ADICIONADO: {0}", pessoa.AddCredito());
         }
     }
 }

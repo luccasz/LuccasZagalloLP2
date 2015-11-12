@@ -11,23 +11,17 @@ namespace Aula_03_11_15
         public string cliente { get; set; }
         public int numConta { get; set; }
         public double saldo { get; set; }
-  
-        public void Depositar(double deposito) 
+
+        public void Sacar(double sqe)
         {
-            saldo += deposito;
-            Console.WriteLine("Depositou R${0} ", deposito);
+            if(saldo > 0 && saldo >= sqe)
+                saldo = saldo - sqe;
+            else
+                Console.WriteLine("Saldo negativo!!!");
         }
-        public void Sacar(double saque, double limite)
+        public void Depositar(double dpst) 
         {
-            saldo = saldo - saque;
-            Console.WriteLine("Sacou R${0}", saque);
-
-            Console.WriteLine("Limite R${0}", limite);
-
-            if(saldo + limite < saque)
-            {
-                Console.WriteLine("Saldo Insfuciente!!!");
-            }
+            saldo = saldo + dpst;
         }
     }
 }

@@ -10,16 +10,10 @@ namespace Aula_03_11_15
     {
         public double limite { get; set; }
 
-        public void Sacar()
+        public void Sacar(double sqe)
         {
-            if(saldo == limite)
-            {
-                Console.WriteLine("Saldo no valor do limite!!!");
-            }
-            else
-            {
-                Console.WriteLine("Saldo menor que o limite!!!");
-            }
+            if (saldo + limite > sqe)
+                saldo = saldo - sqe;
         }
     }
 }
