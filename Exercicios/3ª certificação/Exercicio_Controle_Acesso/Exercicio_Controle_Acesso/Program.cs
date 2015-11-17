@@ -49,16 +49,11 @@ namespace Controle_Acesso
 
                         if (senhaUsu == senha)
                         {
-                            Console.WriteLine("");
-                            Console.WriteLine("ID: {0} ", u.Id);
-                            Console.WriteLine("Nome: {0} ", u.Nome);
-                            Console.WriteLine("Email: {0} ", u.Email);
-                            Console.WriteLine("Login: {0}", u.Login);
-                            Console.WriteLine("Senha: {0}", u.Senha);
-                            Console.WriteLine("Data Último Acesso: {0}", u.AtualizaUltimoAcesso(u.Data));
+                            Console.WriteLine("Última data de Acesso: {0}", u.AtualizaUltimoAcesso(u.Data));
 
                             Console.WriteLine("");
-                            Console.WriteLine("LOGIN EFETUADO COM SUCESSO!!");
+                            Console.WriteLine("DATA ATUALIZADA!!!! LOGIN EFETUADO COM SUCESSO!!!!!");
+                            Console.WriteLine("");
                         }
                         else
                         {
@@ -75,11 +70,11 @@ namespace Controle_Acesso
                     reader.Close();
                 }
                 Console.WriteLine("");
-                Console.WriteLine("Fazer logout?? (sim)");
+                Console.WriteLine("Fazer logout? (s)");
                 string logout = Console.ReadLine();
                 Console.WriteLine("");
 
-                if (logout == "sim")
+                if (logout == "s")
                 {
                     continue;
                 }
